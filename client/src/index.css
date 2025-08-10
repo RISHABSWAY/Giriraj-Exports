@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Playfair+Display:wght@500;700&display=swap');
+
+body {
+  bg: #1A1A1D;
+  text-gold: 300;
+  font-family: 'Playfair Display', serif;
+}
