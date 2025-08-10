@@ -1,43 +1,29 @@
-// src/data/products.js
+// Products.js
 const products = [
   {
     name: "Copper Bottle",
     slug: "copper-bottle",
-    description: "Handcrafted pure copper water bottle for a healthy lifestyle.",
-    price: "₹799",
-    length: "25 cm",
-    width: "7 cm",
-    weight: "300 gm",
-    images: [
-      "/Images/Cooper Banner/Bottle/CooperBottle Banner.jpg"
-    ],
-  },
-  {
-    name: "Copper Thali Set",
-    slug: "copper-thali-set",
-    description: "Elegant copper thali set for puja and dining.",
+    category: "Bottle",
+    description: "Elegant copper bottle for healthy daily hydration.",
     price: "₹1499",
-    length: "30 cm",
-    width: "30 cm",
-    weight: "800 gm",
-    images: [
-      "/Assets/CopperUtensils/CopperBottles/Printed 2.png",
-      "/Assets/CopperUtensils/CopperBottles/Printed 3.png",
-    ],
+    images: ["/Images/Cooper Banner/Bottle/CooperBottle Banner.jpg"],
   },
   {
     name: "Copper Kalash",
     slug: "copper-kalash",
-    description: "Traditional copper kalash for rituals and ceremonies.",
+    category: "Kalash",
+    description: "Traditional copper kalash for rituals.",
     price: "₹599",
-    length: "15 cm",
-    width: "15 cm",
-    weight: "400 gm",
-    images: [
-      "/Assets/CopperUtensils/CopperBottles/Printed 3.png",
-      "/Assets/CopperUtensils/CopperBottles/Printed 1.png",
-    ],
+    images: ["/Images/Cooper Banner/Bottle/CooperBottle Banner.jpg"],
   },
+  {
+    name: "Copper Diya Set",
+    slug: "copper-diya-set",
+    category: "Diyas",
+    description: "Beautiful copper diyas for spiritual use.",
+    price: "₹399",
+    images: ["/Images/Cooper Banner/Bottle/CooperBottle Banner.jpg"],
+  }
 ];
 
 export default products;

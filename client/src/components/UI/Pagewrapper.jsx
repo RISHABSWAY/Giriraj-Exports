@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import Footer from "../../pages/Footer"; // adjust path if needed
 
 const PageWrapper = ({ children }) => (
   <>
@@ -12,9 +11,6 @@ const PageWrapper = ({ children }) => (
     >
       {children}
     </motion.div>
-
-    {/* Global footer */}
-    <Footer />
   </>
 );
 

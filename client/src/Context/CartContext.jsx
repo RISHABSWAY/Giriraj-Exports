@@ -19,7 +19,7 @@ export const CartProvider = ({ children }) => {
     const cleanProduct = {
       ...product,
       price: Number(product.price) || 0, // force numeric
-      image: product.image || "/placeholder.jpg", // fallback image
+      image: product.image || (product.images ? product.images[0] : "/placeholder.jpg"), // fallback image
     };
 
     setCartItems((prev) => {

@@ -1,22 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import PageWrapper from "../components/UI/Pagewrapper";
-
 
 const categories = [
-  { name: "Puja Utensils", image: "../Images/puja.png", link: "#" },
-  { name: "Copper Items", image: "../Images/Bronze.png", link: "/copper-utensils" },
-  { name: "Brass Items", image: "../Images/Brass.png", link: "#" },
-  { name: "Steel Ware", image: "../Images/Copper.png", link: "#" },
+  { name: "Puja Utensils", image: "/Images/puja.png", link: "#" },
+  { name: "Copper Items", image: "/Images/Bronze.png", link: "/copper-utensils" },
+  { name: "Brass Items", image: "/Images/Brass.png", link: "#" },
+  { name: "Steel Ware", image: "/Images/Copper.png", link: "#" },
 ];
 
 export default function HomePage() {
   return (
-    <PageWrapper>
-    <div className="min-h-screen flex flex-col bg-white text-gray-900">
-
+    <div className="flex-1 flex flex-col text-gray-900">
       {/* Hero Banner */}
-      <section className="bg-white text-center py-16 sm:py-24 px-4">
+      <section className="bg-gray-50 text-center py-16 sm:py-24 px-4">
         <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-[#D97706] mb-4 leading-tight">
           Pure. Timeless. Craftsmanship.
         </h1>
@@ -34,7 +30,7 @@ export default function HomePage() {
       </section>
 
       {/* Featured Categories */}
-      <section className="py-12">
+      <section className="py-12 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4">
           <h3 className="text-2xl font-semibold mb-6 text-center">Shop by Category</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -60,7 +56,7 @@ export default function HomePage() {
       </section>
 
       {/* Product Preview */}
-      <section className="py-10 bg-gray-50">
+      <section className="py-10 bg-white"> 
         <div className="max-w-6xl mx-auto px-4">
           <h3 className="text-2xl font-semibold mb-6">Featured Products</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -77,36 +73,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="bg-gray-50 text-gray-700 py-8">
-        <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div>
-            <h5 className="text-lg font-semibold mb-2 text-gray-900">Giriraj Metals</h5>
-            <p className="text-sm">
-              Serving tradition with purity since 1990. Shop our exclusive range of metal ware and pooja utensils.
-            </p>
-          </div>
-          <div>
-            <h5 className="text-lg font-semibold mb-2 text-gray-900">Quick Links</h5>
-            <ul className="text-sm space-y-1">
-              <li><Link to="/" className="hover:underline">Home</Link></li>
-              <li><Link to="/copper-utensils" className="hover:underline">Copper Items</Link></li>
-              <li><a href="#" className="hover:underline">Puja Utensils</a></li>
-              <li><a href="#" className="hover:underline">Brass Items</a></li>
-              <li><a href="#" className="hover:underline">Steel Ware</a></li>
-              <li><a href="#contact" className="hover:underline">Contact</a></li>
-            </ul>
-          </div>
-          <div>
-            <h5 className="text-lg font-semibold mb-2 text-gray-900">Contact</h5>
-            <p className="text-sm">Email: info@sharmametals.com</p>
-            <p className="text-sm">Phone: +91 9876543210</p>
-            <p className="text-sm">Address: Ahmedabad, India</p>
-          </div>
-        </div>
-      </footer>
     </div>
-    </PageWrapper>
   );
 }

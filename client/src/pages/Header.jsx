@@ -16,9 +16,8 @@ const Header = () => {
   const inputRef = useRef(null);
   const wrapperRef = useRef(null);
 
-  const { cart } = useCart();
-  const totalItems = (cart || []).reduce((sum, item) => sum + item.quantity, 0);
-
+  const { cartItems } = useCart(); // FIX: use cartItems, not cart
+  const totalItems = (cartItems || []).reduce((sum, item) => sum + item.quantity, 0);
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -33,6 +32,7 @@ const Header = () => {
   return (
     <header className="sticky top-0 bg-white border-b border-gray-200 shadow-sm z-50">
       <div className="max-w-7xl mx-auto flex justify-between items-center px-4 sm:px-6 py-3">
+        
         {/* Logo + Name */}
         <div className="flex items-center space-x-3">
           <img src="/Assets/LogoinSide.svg" alt="Giriraj Metals" className="h-10 sm:h-12" />
@@ -58,9 +58,9 @@ const Header = () => {
           ))}
           <Link to="#" className="hover:text-[#D97706]">Contact</Link>
 
-          {/* Search */}
+          {/* Search Icon */}
           <div ref={wrapperRef} className="relative">
-            <button onClick={() => setShowSearch((prev) => !prev)} className="p-2 rounded-full hover:bg-gray-100">
+            <button onClick={() => setShowSearch(prev => !prev)} className="p-2 rounded-full hover:bg-gray-100">
               <Search size={20} color="#D97706" />
             </button>
             {showSearch && (
@@ -77,7 +77,7 @@ const Header = () => {
 
           {/* Cart Icon */}
           <Link to="/cart" className="relative hover:text-[#D97706]">
-            <ShoppingCart size={22} />
+            <ShoppingCart size={22} color="#D97706" />
             {totalItems > 0 && (
               <span className="absolute -top-2 -right-3 bg-[#D97706] text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
                 {totalItems}
@@ -86,40 +86,64 @@ const Header = () => {
           </Link>
         </nav>
 
-        {/* Mobile hamburger */}
-        <div className="md:hidden flex items-center gap-2">
-          <button onClick={() => setShowSearch((prev) => !prev)} className="p-1">
+        {/* Mobile Icons — Search + Cart + Hamburger */}
+        <div className="md:hidden flex items-center gap-3">
+          {/* Search button */}
+          <button onClick={() => setShowSearch(prev => !prev)} className="p-1">
             <Search size={20} color="#D97706" />
           </button>
+
+          {/* Cart icon always visible */}
+          <Link to="/cart" className="relative hover:text-[#D97706]">
+            <ShoppingCart size={22} />
+            {totalItems > 0 && (
+              <span className="absolute -top-2 -right-3 bg-[#D97706] text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
+                {totalItems}
+              </span>
+            )}
+          </Link>
+
+          {/* Hamburger menu */}
           <button onClick={() => setMobileMenu(prev => !prev)} className="p-1">
             <Menu size={24} color="#D97706" />
           </button>
         </div>
       </div>
 
+      {/* Mobile search input below header when toggled */}
+      {showSearch && (
+        <div className="md:hidden px-4 pb-3 border-t border-gray-200 bg-white">
+          <input
+            type="text"
+            placeholder="Search..."
+            className="w-full px-3 py-2 border border-gray-300 bg-white text-gray-700 rounded-md focus:ring-[#D97706] focus:outline-none"
+          />
+        </div>
+      )}
+
       {/* Mobile Menu */}
       {mobileMenu && (
         <div className="md:hidden bg-white border-t border-gray-200">
           <nav className="flex flex-col space-y-1 py-2 px-4 text-gray-700">
-            <Link to="/" className="hover:text-[#D97706]">Home</Link>
+            <Link to="/" onClick={() => setMobileMenu(false)} className="hover:text-[#D97706]">Home</Link>
             {categories.map(cat => (
               <div key={cat.name}>
                 <div className="font-semibold">{cat.name}</div>
                 <div className="pl-4">
                   {cat.subcategories.map(sub => (
-                    <Link key={sub} to="#" className="block py-1 text-sm hover:text-[#D97706]">
+                    <Link
+                      key={sub}
+                      to="#"
+                      onClick={() => setMobileMenu(false)}
+                      className="block py-1 text-sm hover:text-[#D97706]"
+                    >
                       {sub}
                     </Link>
                   ))}
                 </div>
               </div>
             ))}
-            <Link to="#" className="hover:text-[#D97706]">Contact</Link>
-            <Link to="/cart" className="hover:text-[#D97706]">
-              Cart {totalItems > 0 && (
-                <span className="ml-1 text-xs text-white bg-[#D97706] px-2 py-0.5 rounded-full">{totalItems}</span>
-              )}
-            </Link>
+            <Link to="#" onClick={() => setMobileMenu(false)} className="hover:text-[#D97706]">Contact</Link>
           </nav>
         </div>
       )}
